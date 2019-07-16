@@ -19,9 +19,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Feed extends Subsystem {
   VictorSPX feed;
+  VictorSPX feedR;
   public Feed()
   {
     feed = new VictorSPX(6);
+    feedR = new VictorSPX(7);
+    feedR.follow(feed);
+    feedR.setInverted(true);
     feed.setNeutralMode(NeutralMode.Brake);
   }
   public void reload(double speed)
