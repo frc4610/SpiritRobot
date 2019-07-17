@@ -23,13 +23,17 @@ public class OI {
   //public Joystick OP = new Joystick(1);
   public Button con1 = new JoystickButton(CON, 1);
   public Button con5 = new JoystickButton(CON, 5);
+  public Button con6 = new JoystickButton(CON, 6);
   public Button con7 = new JoystickButton(CON, 7);
   public Button con8 = new JoystickButton(CON, 8);
   public OI()
   {
-    con1.whenPressed(new driveModeSwitch());
+    //con1.whenPressed(new driveModeSwitch());
     //con5.whileHeld(new Feed());
-    //con7.whileHeld(new Shoot());
+    con5.whileHeld(new Shoot(.4));
+    con6.whileHeld(new Shoot(.6));
+    con7.whileHeld(new Shoot(.8));
+    con8.whileHeld(new Shoot(1));
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a
