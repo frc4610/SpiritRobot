@@ -20,7 +20,7 @@ import frc.robot.commands.Shoot;
  */
 public class OI {
   public Joystick CON = new Joystick(0);
-  //public Joystick OP = new Joystick(1);
+  public Joystick OP = new Joystick(1);
   public Button con1 = new JoystickButton(CON, 1);
   public Button con5 = new JoystickButton(CON, 5);
   public Button con6 = new JoystickButton(CON, 6);
@@ -28,8 +28,8 @@ public class OI {
   public Button con8 = new JoystickButton(CON, 8);
   public OI()
   {
-    //con1.whenPressed(new driveModeSwitch());
-    //con5.whileHeld(new Feed());
+    con1.whenPressed(new driveModeSwitch());
+    con5.whileHeld(new Feed());
     con5.whileHeld(new Shoot(.4));
     con6.whileHeld(new Shoot(.6));
     con7.whileHeld(new Shoot(.8));

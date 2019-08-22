@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.Drive;
-import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Feed;
@@ -44,17 +43,17 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    //shooter = new Shooter();
+    shooter = new Shooter();
     
-    //feeder = new Feed();
+    feeder = new Feed();
     shooter = new Shooter();
     tank = true;//default to tank
-    //driveBase = new DriveBase();
-    //drive = new Drive();
+    driveBase = new DriveBase();
+    drive = new Drive();
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
+    //m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
+    //chooser.addOption("My Auto", new MyAutoCommand());
+    //SmartDashboard.putData("Auto mode", m_chooser);
   }
 
   /**
@@ -96,7 +95,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+    //m_autonomousCommand = m_chooser.getSelected();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
@@ -106,9 +105,9 @@ public class Robot extends TimedRobot {
      */
 
     // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
+    /*if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
-    }
+    }*/
   }
 
   /**
@@ -121,7 +120,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    //drive.start();
+    drive.start();
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -136,7 +135,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    //SmartDashboard.putBoolean("Tank Drive?", tank);
+    SmartDashboard.putBoolean("Tank Drive?", tank);
     Scheduler.getInstance().run();
   }
 
