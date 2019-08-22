@@ -27,13 +27,13 @@ public class Aim extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    sPos = Robot.shooter.aEnc();
+   // sPos = Robot.shooter.aEnc();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(pos > sPos)
+    /*if(pos > sPos)
     {
       Robot.shooter.aim(ControlMode.Position, pos);
     }
@@ -44,14 +44,14 @@ public class Aim extends Command {
     else
     {
       Robot.shooter.aim(ControlMode.PercentOutput, 0);
-    }
+    }*/
     
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if(pos > sPos)
+    /*if(pos > sPos)
     {
     return Robot.shooter.aEnc() >= pos;
     }
@@ -60,22 +60,22 @@ public class Aim extends Command {
       return Robot.shooter.aEnc() <= pos;
     }
     else
-    {
+    {*/
       return true;
-    }
+    //}
 
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.shooter.aim(ControlMode.PercentOutput, 0);
+    //Robot.shooter.aim(ControlMode.PercentOutput, 0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.shooter.aim(ControlMode.PercentOutput, 0);
+    //Robot.shooter.aim(ControlMode.PercentOutput, 0);
   }
 }
