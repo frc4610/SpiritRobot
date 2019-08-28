@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -19,13 +20,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveBase extends Subsystem {
   private VictorSPX driveFrontL;
   private VictorSPX driveFrontR;
-  private VictorSPX driveRearL;
-  private VictorSPX driveRearR;
+  private TalonSRX driveRearL;
+  private TalonSRX driveRearR;
 
   public DriveBase()
   {
-    driveRearR = new VictorSPX(2);
-    driveRearL = new VictorSPX(3);
+    driveRearR = new TalonSRX(2);
+    driveRearL = new TalonSRX(3);
     driveFrontR = new VictorSPX(0);
     driveFrontL = new VictorSPX(1);
     driveRearL.follow(driveFrontL);

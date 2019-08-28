@@ -11,8 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class Feed extends Command {
-  public Feed() {
+  private static int speed;
+  public Feed(int Speed) {
     requires(Robot.feeder);
+    speed = Speed;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -25,13 +27,13 @@ public class Feed extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.feeder.reload(1);
+    Robot.feeder.reload(speed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return !Robot.m_oi.con5.get();
+    return false;
   }
 
   // Called once after isFinished returns true

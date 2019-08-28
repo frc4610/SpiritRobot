@@ -21,19 +21,22 @@ import frc.robot.commands.Shoot;
 public class OI {
   public Joystick CON = new Joystick(0);
   public Joystick OP = new Joystick(1);
-  public Button con1 = new JoystickButton(CON, 1);
-  public Button con5 = new JoystickButton(CON, 5);
-  public Button con6 = new JoystickButton(CON, 6);
-  public Button con7 = new JoystickButton(CON, 7);
-  public Button con8 = new JoystickButton(CON, 8);
+  public Button op1 = new JoystickButton(OP, 1);
+  public Button op2 = new JoystickButton(OP, 2);
+  public Button op3 = new JoystickButton(OP, 3);
+  public Button op5 = new JoystickButton(OP, 5);
+  public Button op6 = new JoystickButton(OP, 6);
+  public Button op7 = new JoystickButton(OP, 7);
+  public Button op8 = new JoystickButton(OP, 8);
   public OI()
   {
-    con1.whenPressed(new driveModeSwitch());
-    con5.whileHeld(new Feed());
-    con5.whileHeld(new Shoot(.4));
-    con6.whileHeld(new Shoot(.6));
-    con7.whileHeld(new Shoot(.8));
-    con8.whileHeld(new Shoot(1));
+    op1.whenPressed(new driveModeSwitch());
+    op2.whileHeld(new Feed(1));
+    op3.whileHeld(new Feed(-1));
+    op5.whileHeld(new Shoot(.4));
+    op6.whileHeld(new Shoot(.6));
+    op7.whileHeld(new Shoot(.8));
+    op8.whileHeld(new Shoot(1));
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a

@@ -9,6 +9,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -18,12 +19,12 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 
 public class Feed extends Subsystem {
-  VictorSPX feed;
-  VictorSPX feedR;
+  TalonSRX feed;
+  TalonSRX feedR;
   public Feed()
   {
-    feed = new VictorSPX(6);
-    feedR = new VictorSPX(7);
+    feed = new TalonSRX(6);
+    feedR = new TalonSRX(7);
     feedR.follow(feed);
     feedR.setInverted(true);
     feed.setNeutralMode(NeutralMode.Brake);

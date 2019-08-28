@@ -18,17 +18,17 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
-  private TalonSRX shootL;
-  private TalonSRX shootR;
+  private VictorSPX shootL;
+  private VictorSPX shootR;
   private VictorSPX shootLF;
   private VictorSPX shootRF;
   private TalonSRX aim;
   public Shooter()
   {
-    shootL = new TalonSRX(0);
-    shootR = new TalonSRX(1);
-    shootLF = new VictorSPX(2);
-    shootRF = new VictorSPX(3);
+    shootL = new VictorSPX(8);
+    shootR = new VictorSPX(9);
+    shootLF = new VictorSPX(10);
+    shootRF = new VictorSPX(11);
     //aim = new TalonSRX(0);
     shootL.setInverted(true);
     shootLF.setInverted(true);
