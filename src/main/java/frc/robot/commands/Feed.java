@@ -12,9 +12,13 @@ import frc.robot.Robot;
 
 public class Feed extends Command {
   private static int speed;
-  public Feed(int Speed) {
+  private double runTime;
+  private double runToTime;
+  //a runToTime of zero is running indefinitly
+  public Feed(int Speed, double RunToTime) {
     requires(Robot.feeder);
     speed = Speed;
+    runToTime = RunToTime;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -22,18 +26,31 @@ public class Feed extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    runTime = 0;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.feeder.reload(speed);
+    runTime += .02;
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    if(runToTime == 0)
+    {
+      return false;
+    }
+    else if(runToTime < 0)
+    {
+      return true;
+    }
+    else
+    {
+      return runTime >= runToTime;
+    }
   }
 
   // Called once after isFinished returns true

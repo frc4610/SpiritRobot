@@ -24,6 +24,7 @@ public class OI {
   public Button op1 = new JoystickButton(OP, 1);
   public Button op2 = new JoystickButton(OP, 2);
   public Button op3 = new JoystickButton(OP, 3);
+  public Button op4 = new JoystickButton(OP, 4);
   public Button op5 = new JoystickButton(OP, 5);
   public Button op6 = new JoystickButton(OP, 6);
   public Button op7 = new JoystickButton(OP, 7);
@@ -31,8 +32,9 @@ public class OI {
   public OI()
   {
     op1.whenPressed(new driveModeSwitch());
-    op2.whileHeld(new Feed(1));
-    op3.whileHeld(new Feed(-1));
+    op2.whileHeld(new Feed(1,0));
+    op3.whileHeld(new Feed(-1,0));
+    op4.whenPressed(new Feed(1,1.5));
     op5.whileHeld(new Shoot(.4));
     op6.whileHeld(new Shoot(.6));
     op7.whileHeld(new Shoot(.8));
