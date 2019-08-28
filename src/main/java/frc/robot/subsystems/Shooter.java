@@ -18,11 +18,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
-  private VictorSPX shootL;
-  private VictorSPX shootR;
-  private VictorSPX shootLF;
-  private VictorSPX shootRF;
-  private TalonSRX aim;
+  private VictorSPX shootL;//left main motor
+  private VictorSPX shootR;//right main motor
+  private VictorSPX shootLF;//Left follower motor
+  private VictorSPX shootRF;//right follower motor
+  private TalonSRX aim;//currently unsused
   public Shooter()
   {
     shootL = new VictorSPX(8);

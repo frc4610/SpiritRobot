@@ -21,7 +21,7 @@ public class driveModeSwitch extends Command {
   protected void initialize() {
     if(Robot.tank)
     {
-      Robot.tank = false;
+      Robot.tank = false;//determine wheter to set it to tank or arcade, a true value of tank is tank drive, false is arcade
     }
     else if (!Robot.tank)
     {

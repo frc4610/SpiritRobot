@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class Aim extends Command {
+  //currently unused
   private int sPos;
   private int pos;
   public Aim(int Pos) {

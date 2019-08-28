@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class Feed extends Command {
-  private static int speed;
-  private double runTime;
-  private double runToTime;
+  private static int speed;//speed to shoot at
+  private double runTime;//how long it has gone so far
+  private double runToTime;// how long it should run
   //a runToTime of zero is running indefinitly
   public Feed(int Speed, double RunToTime) {
     requires(Robot.feeder);
@@ -33,7 +33,7 @@ public class Feed extends Command {
   @Override
   protected void execute() {
     Robot.feeder.reload(speed);
-    runTime += .02;
+    runTime += .02;//"timer function"
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -41,15 +41,15 @@ public class Feed extends Command {
   protected boolean isFinished() {
     if(runToTime == 0)
     {
-      return false;
+      return false;// time of 0 means indefinite run
     }
     else if(runToTime < 0)
     {
-      return true;
+      return true;//no negative values should be given
     }
     else
     {
-      return runTime >= runToTime;
+      return runTime >= runToTime;//stops at set time
     }
   }
 

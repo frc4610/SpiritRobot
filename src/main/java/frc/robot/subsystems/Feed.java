@@ -18,8 +18,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 
 public class Feed extends Subsystem {
-  TalonSRX feed;
-  TalonSRX feedR;
+  TalonSRX feed;//Left feed motor
+  TalonSRX feedR;//right feed motor
   public Feed()
   {
     feed = new TalonSRX(6);
@@ -32,7 +32,6 @@ public class Feed extends Subsystem {
   {
     feed.set(ControlMode.PercentOutput, speed);
   }
-  // | || || |_
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 

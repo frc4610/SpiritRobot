@@ -44,7 +44,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     shooter = new Shooter();
-    
+    //basic setters
     feeder = new Feed();
     shooter = new Shooter();
     tank = true;//default to tank
@@ -120,7 +120,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    drive.start();
+    drive.start();//start driving
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -135,7 +135,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    SmartDashboard.putBoolean("Tank Drive?", tank);
+    SmartDashboard.putBoolean("Tank Drive?", tank);//give the value to the driver/operator of control mode
     Scheduler.getInstance().run();
   }
 

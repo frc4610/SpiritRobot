@@ -19,8 +19,8 @@ import frc.robot.commands.Shoot;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  public Joystick CON = new Joystick(0);
-  public Joystick OP = new Joystick(1);
+  public Joystick CON = new Joystick(0);//driver
+  public Joystick OP = new Joystick(1);//operator
   public Button op1 = new JoystickButton(OP, 1);
   public Button op2 = new JoystickButton(OP, 2);
   public Button op3 = new JoystickButton(OP, 3);
@@ -31,6 +31,7 @@ public class OI {
   public Button op8 = new JoystickButton(OP, 8);
   public OI()
   {
+    //see various functions
     op1.whenPressed(new driveModeSwitch());
     op2.whileHeld(new Feed(1,0));
     op3.whileHeld(new Feed(-1,0));

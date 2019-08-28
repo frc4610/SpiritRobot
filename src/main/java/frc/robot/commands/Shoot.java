@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class Shoot extends Command {
-  private double windSpeed;
-  private double maxSpeed;
+  private double windSpeed;//how fast to accelerate
+  private double maxSpeed;//speed to accelerate towards
   public Shoot(double MaxSpeed) {
     requires(Robot.shooter);
     maxSpeed = MaxSpeed;
@@ -23,7 +23,7 @@ public class Shoot extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    windSpeed = .02;
+    windSpeed = .02;//starts the vaule at 2% power
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -32,7 +32,7 @@ public class Shoot extends Command {
     Robot.shooter.shoot(windSpeed);
     if(windSpeed < maxSpeed)
     {
-      windSpeed += .02;
+      windSpeed += .02;//slowly increase the power to the shooter
     }
   }
 

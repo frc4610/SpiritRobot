@@ -18,10 +18,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 
 public class DriveBase extends Subsystem {
-  private VictorSPX driveFrontL;
-  private VictorSPX driveFrontR;
-  private TalonSRX driveRearL;
-  private TalonSRX driveRearR;
+  private VictorSPX driveFrontL;//left front motor
+  private VictorSPX driveFrontR;//right front motor
+  private TalonSRX driveRearL;//left rear motor
+  private TalonSRX driveRearR;//right rear motor
 
   public DriveBase()
   {

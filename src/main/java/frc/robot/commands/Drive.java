@@ -27,11 +27,11 @@ public class Drive extends Command {
   protected void execute() {
     if(Robot.tank)
     {
-      Robot.driveBase.move(-Robot.m_oi.CON.getRawAxis(1), -Robot.m_oi.CON.getRawAxis(3));
+      Robot.driveBase.move(-Robot.m_oi.CON.getRawAxis(1), -Robot.m_oi.CON.getRawAxis(3));//tankdrive
     }
     else
     {
-      Robot.driveBase.move(-(Robot.m_oi.CON.getRawAxis(3)-Robot.m_oi.CON.getRawAxis(2)), -(Robot.m_oi.CON.getRawAxis(3)+Robot.m_oi.CON.getRawAxis(2)));
+      Robot.driveBase.move(-(Robot.m_oi.CON.getRawAxis(3)-Robot.m_oi.CON.getRawAxis(2)), -(Robot.m_oi.CON.getRawAxis(3)+Robot.m_oi.CON.getRawAxis(2)));//arcade drive
     }
   }
 
