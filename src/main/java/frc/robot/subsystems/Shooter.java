@@ -25,7 +25,7 @@ public class Shooter extends Subsystem {
   public Shooter()
   {
     
-    shootL = new CANSparkMax(8, MotorType.kBrushless);
+    shootL = new CANSparkMax(8, MotorType.kBrushless);// all shooting motors are brushless
     shootR = new CANSparkMax(9, MotorType.kBrushless);
     shootLF = new CANSparkMax(10, MotorType.kBrushless);
     shootRF = new CANSparkMax(11, MotorType.kBrushless);
@@ -34,7 +34,7 @@ public class Shooter extends Subsystem {
     shootL.follow(shootR);
     shootLF.follow(shootR);
     shootRF.follow(shootR);
-    shootL.setIdleMode(IdleMode.kBrake);
+    shootL.setIdleMode(IdleMode.kBrake);//same as neutral mode brake, makes motors hard stop rather than be in neutral
     shootR.setIdleMode(IdleMode.kBrake);
     shootLF.setIdleMode(IdleMode.kBrake);
     shootRF.setIdleMode(IdleMode.kBrake);
@@ -42,11 +42,11 @@ public class Shooter extends Subsystem {
 
   public void shoot(double speed)
   {
-    shootR.set(speed);
+    shootR.set(speed);//control mode is no longer a parameter, pid may be harder. 
   }
   public double tempCheck()
   {
-    return shootR.getMotorTemperature();
+    return shootR.getMotorTemperature();// finds the motor temperature, needs testing
   }
   // Put methods for controlling this subsystem
   // here. Call these from Commands.

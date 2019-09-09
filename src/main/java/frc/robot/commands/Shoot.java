@@ -30,7 +30,7 @@ public class Shoot extends Command {
   @Override
   protected void execute() {
     Robot.shooter.shoot(windSpeed);
-    if(windSpeed < maxSpeed)
+    if(windSpeed < maxSpeed) // winding up manually in cord like this may be obselete, needs further testing
     {
       windSpeed += .02;//slowly increase the power to the shooter
     }
