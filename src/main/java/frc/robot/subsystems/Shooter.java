@@ -7,9 +7,9 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -17,28 +17,32 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Add your docs here.
  */
 public class Shooter extends Subsystem {
-  private VictorSPX shootL;//left main motor
-  private VictorSPX shootR;//right main motor
-  private VictorSPX shootLF;//Left follower motor
-  private VictorSPX shootRF;//right follower motor
+  private CANSparkMax shootL;//left main motor
+  private CANSparkMax shootR;//right main motor
+  private CANSparkMax shootLF;//Left follower motor
+  private CANSparkMax shootRF;//right follower motor
+  
   public Shooter()
   {
-    shootL = new VictorSPX(8);
-    shootR = new VictorSPX(9);
-    shootLF = new VictorSPX(10);
-    shootRF = new VictorSPX(11);
+    
+    shootL = new CANSparkMax(8, MotorType.kBrushless);
+    shootR = new CANSparkMax(9, MotorType.kBrushless);
+    shootLF = new CANSparkMax(10, MotorType.kBrushless);
+    shootRF = new CANSparkMax(11, MotorType.kBrushless);
     shootL.setInverted(true);
     shootLF.setInverted(true);
     shootL.follow(shootR);
     shootLF.follow(shootR);
     shootRF.follow(shootR);
-    shootL.setNeutralMode(NeutralMode.Brake);
-    shootR.setNeutralMode(NeutralMode.Brake);
+    shootL.setIdleMode(IdleMode.kBrake);
+    shootR.setIdleMode(IdleMode.kBrake);
+    shootLF.setIdleMode(IdleMode.kBrake);
+    shootRF.setIdleMode(IdleMode.kBrake);
   }
 
   public void shoot(double speed)
   {
-    shootR.set(ControlMode.PercentOutput, speed);
+    shootR.set(speed);
   }
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
