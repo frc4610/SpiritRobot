@@ -136,6 +136,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     SmartDashboard.putBoolean("Tank Drive?", tank);//give the value to the driver/operator of control mode
+    SmartDashboard.putNumber("Motor Temp (R)", shooter.tempCheck());
     Scheduler.getInstance().run();
   }
 

@@ -44,6 +44,10 @@ public class Shooter extends Subsystem {
   {
     shootR.set(speed);
   }
+  public double tempCheck()
+  {
+    return shootR.getMotorTemperature();
+  }
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
