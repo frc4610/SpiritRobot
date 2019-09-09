@@ -38,6 +38,10 @@ public class Shooter extends Subsystem {
     shootR.setIdleMode(IdleMode.kBrake);
     shootLF.setIdleMode(IdleMode.kBrake);
     shootRF.setIdleMode(IdleMode.kBrake);
+    /*shootR.setOpenLoopRampRate(1);// should be repleacment function to ramp towards full speed, test later after other functionalities work
+    shootRF.setOpenLoopRampRate(1);
+    shootL.setOpenLoopRampRate(1);
+    shootLF.setOpenLoopRampRate(1);*/
   }
 
   public void shoot(double speed)
