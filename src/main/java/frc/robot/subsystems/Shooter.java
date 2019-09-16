@@ -21,7 +21,7 @@ public class Shooter extends Subsystem {
   private CANSparkMax shootR;//right main motor
   private CANSparkMax shootLF;//Left follower motor
   private CANSparkMax shootRF;//right follower motor
-  
+  //test 1
   public Shooter()
   {
     
