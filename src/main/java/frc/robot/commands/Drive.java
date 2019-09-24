@@ -27,7 +27,7 @@ public class Drive extends Command {
   protected void execute() {
     if(Robot.tank)
     {
-      Robot.driveBase.move(-Robot.m_oi.CON.getRawAxis(1), -Robot.m_oi.CON.getRawAxis(3));//tankdrive
+      Robot.driveBase.move(-Robot.m_oi.CON.getRawAxis(1), -Robot.m_oi.CON.getRawAxis(3));//tankdrive//fix in drivebase, the front was incorrect wip
     }
     else
     {

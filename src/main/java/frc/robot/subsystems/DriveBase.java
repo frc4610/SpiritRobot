@@ -18,21 +18,32 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 
 public class DriveBase extends Subsystem {
-  private VictorSPX driveFrontL;//left front motor
-  private VictorSPX driveFrontR;//right front motor
-  private TalonSRX driveRearL;//left rear motor
-  private TalonSRX driveRearR;//right rear motor
-
+  private TalonSRX driveFrontL;//left front motor
+  private TalonSRX driveFrontR;//right front motor
+  private VictorSPX driveRearL;//left rear motor
+  private VictorSPX driveRearR;//right rear motor
+  private double peakR;
+  private double peakF;
   public DriveBase()
   {
-    driveRearR = new TalonSRX(2);
-    driveRearL = new TalonSRX(3);
-    driveFrontR = new VictorSPX(0);
-    driveFrontL = new VictorSPX(1);
+    peakF = .5;
+    peakR = -.5;
+    driveFrontL = new TalonSRX(2);
+    driveFrontR = new TalonSRX(3);
+    driveRearL= new VictorSPX(0);
+    driveRearR = new VictorSPX(1);
     driveRearL.follow(driveFrontL);
     driveRearR.follow(driveFrontR);
     driveFrontR.setInverted(true);
     driveRearR.setInverted(true);
+    driveFrontL.configPeakOutputForward(peakF);
+    driveFrontL.configPeakOutputReverse(peakR);
+    driveFrontR.configPeakOutputForward(peakF);
+    driveFrontR.configPeakOutputReverse(peakR);
+    driveRearL.configPeakOutputForward(peakF);
+    driveRearL.configPeakOutputReverse(peakR);
+    driveRearR.configPeakOutputForward(peakF);
+    driveRearR.configPeakOutputReverse(peakR);
     driveFrontL.setNeutralMode(NeutralMode.Brake);
     driveFrontR.setNeutralMode(NeutralMode.Brake);
     driveRearL.setNeutralMode(NeutralMode.Brake);

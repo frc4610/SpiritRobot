@@ -24,13 +24,13 @@ public class Feed extends Subsystem {
   {
     feed = new TalonSRX(6);
     feedR = new TalonSRX(7);
-    feedR.follow(feed);
-    feedR.setInverted(true);
+    feed.follow(feedR);
+    feed.setInverted(true);
     feed.setNeutralMode(NeutralMode.Brake);
   }
   public void reload(double speed)
   {
-    feed.set(ControlMode.PercentOutput, speed);
+    feedR.set(ControlMode.PercentOutput, speed);
   }
   // Put methods for controlling this subsystem
   // here. Call these from Commands.

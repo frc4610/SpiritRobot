@@ -35,7 +35,7 @@ public class OI {
     op1.whenPressed(new driveModeSwitch());
     op2.whileHeld(new Feed(1,0));
     op3.whileHeld(new Feed(-1,0));
-    op4.whenPressed(new Feed(1,1.5));
+    op4.whenPressed(new Feed(1,.2));
     op5.whileHeld(new Shoot(.4));
     op6.whileHeld(new Shoot(.6));
     op7.whileHeld(new Shoot(.8));
