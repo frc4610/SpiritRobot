@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -19,6 +20,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Shooter extends Subsystem {
   private CANSparkMax shootL;//left main motor
   private CANSparkMax shootR;//right main motor
+  private CANEncoder encoderL;
   //private CANSparkMax shootLF;//Left follower motor
  // private CANSparkMax shootRF;//right follower motor
   //test 1
@@ -26,6 +28,8 @@ public class Shooter extends Subsystem {
   { 
     shootL = new CANSparkMax(8, MotorType.kBrushless);// all shooting motors are brushless
     shootR = new CANSparkMax(9, MotorType.kBrushless);
+    encoderL = new CANEncoder(shootL);
+    encoderL.setPosition(0);
    // shootLF = new CANSparkMax(10, MotorType.kBrushless);
     //shootRF = new CANSparkMax(11, MotorType.kBrushless);
     
@@ -54,6 +58,10 @@ public class Shooter extends Subsystem {
   public boolean isRunning()
   {
     return shootR.get() != 0;
+  }
+  public double encRPM()
+  {
+    return encoderL.getVelocity();
   }
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
