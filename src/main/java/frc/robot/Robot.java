@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -136,6 +140,10 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     SmartDashboard.putBoolean("Tank Drive?", tank);//give the value to the driver/operator of control mode
     SmartDashboard.putNumber("Motor Temp (R)", shooter.tempCheck());// this should find the temperature of motors for overheating purposes.
+    if(shooter.encRPM() > .05)
+    {
+      System.out.println(shooter.encRPM());
+    }
     Scheduler.getInstance().run();
   }
 
@@ -145,4 +153,18 @@ public class Robot extends TimedRobot {
   @Override
   public void testPeriodic() {
   }
+
+  public static void initMotor(TalonSRX motor, double peak)
+  {
+    motor.configPeakOutputForward(peak);
+    motor.configPeakOutputReverse(-peak);
+    motor.setNeutralMode(NeutralMode.Brake);
+  }
+  public static void initMotor(VictorSPX motor, double peak)
+  {
+    motor.configPeakOutputForward(peak);
+    motor.configPeakOutputReverse(-peak);
+    motor.setNeutralMode(NeutralMode.Brake);
+  }
+
 }

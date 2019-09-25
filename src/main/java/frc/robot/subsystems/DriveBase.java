@@ -6,9 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.subsystems;
-
+import frc.robot.Robot;
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -22,12 +21,10 @@ public class DriveBase extends Subsystem {
   private TalonSRX driveFrontR;//right front motor
   private VictorSPX driveRearL;//left rear motor
   private VictorSPX driveRearR;//right rear motor
-  private double peakR;
-  private double peakF;
+  private double peak;
   public DriveBase()
   {
-    peakF = .5;
-    peakR = -.5;
+    peak = .5;
     driveFrontL = new TalonSRX(2);
     driveFrontR = new TalonSRX(3);
     driveRearL= new VictorSPX(0);
@@ -36,19 +33,10 @@ public class DriveBase extends Subsystem {
     driveRearR.follow(driveFrontR);
     driveFrontR.setInverted(true);
     driveRearR.setInverted(true);
-    driveFrontL.configPeakOutputForward(peakF);
-    driveFrontL.configPeakOutputReverse(peakR);
-    driveFrontR.configPeakOutputForward(peakF);
-    driveFrontR.configPeakOutputReverse(peakR);
-    driveRearL.configPeakOutputForward(peakF);
-    driveRearL.configPeakOutputReverse(peakR);
-    driveRearR.configPeakOutputForward(peakF);
-    driveRearR.configPeakOutputReverse(peakR);
-    driveFrontL.setNeutralMode(NeutralMode.Brake);
-    driveFrontR.setNeutralMode(NeutralMode.Brake);
-    driveRearL.setNeutralMode(NeutralMode.Brake);
-    driveRearR.setNeutralMode(NeutralMode.Brake);
-    
+    Robot.initMotor(driveFrontL, peak);
+    Robot.initMotor(driveFrontR, peak);
+    Robot.initMotor(driveRearL, peak);
+    Robot.initMotor(driveRearR, peak);
   }
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
