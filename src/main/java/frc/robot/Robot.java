@@ -35,6 +35,7 @@ public class Robot extends TimedRobot {
   public static DriveBase driveBase;
   public static Feed feeder;
   public Drive drive;
+  public static double launchSpeed;
   public static Shooter shooter;
   public static OI m_oi;
   public static boolean tank;//tank drive if true, arcade if not
@@ -47,6 +48,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    SmartDashboard.putNumber("Max Drive Speed", .5);
+    SmartDashboard.putNumber("Launch Speed", 1);
     //basic setters
     feeder = new Feed();
     shooter = new Shooter();
@@ -124,6 +127,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     drive.start();//start driving
+    driveBase.setMotors(.5);//s et max speed of 50%
+    launchSpeed = 1;
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -138,6 +143,14 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    if(SmartDashboard.getNumber("Max Drive Speed", .5) != .5)
+    {
+    driveBase.setMotors(SmartDashboard.getNumber("Max Drive Speed", .5));
+    }
+    if(SmartDashboard.getNumber("Launch Speed", 1) != 1)
+    {
+      launchSpeed = SmartDashboard.getNumber("Launch Speed", 1);
+    }
     SmartDashboard.putBoolean("Tank Drive?", tank);//give the value to the driver/operator of control mode
     SmartDashboard.putNumber("Motor Temp (R)", shooter.tempCheck());// this should find the temperature of motors for overheating purposes.
     if(shooter.encRPM() > .05)

@@ -45,6 +45,13 @@ public class DriveBase extends Subsystem {
     driveFrontL.set(ControlMode.PercentOutput, speedL);
     driveFrontR.set(ControlMode.PercentOutput, speedR);
   }
+  public void setMotors(double nPeak)
+  {
+    Robot.initMotor(driveFrontL, nPeak);
+    Robot.initMotor(driveFrontR, nPeak);
+    Robot.initMotor(driveRearL, nPeak);
+    Robot.initMotor(driveRearR, nPeak);
+  }
 
   @Override
   public void initDefaultCommand() {
