@@ -39,7 +39,7 @@ public class OI {
     op5.whileHeld(new Shoot(.4));
     op6.whileHeld(new Shoot(.6));
     op7.whileHeld(new Shoot(.8));
-    op8.whileHeld(new Shoot(Robot.launchSpeed));
+    op8.whileHeld(new Shoot(Robot.lSpeed()));
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a

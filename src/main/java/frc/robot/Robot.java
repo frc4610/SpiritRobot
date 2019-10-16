@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
   public static DriveBase driveBase;
   public static Feed feeder;
   public Drive drive;
-  public static double launchSpeed;
+  private static double launchSpeed;
   public static Shooter shooter;
   public static OI m_oi;
   public static boolean tank;//tank drive if true, arcade if not
@@ -50,6 +50,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     SmartDashboard.putNumber("Max Drive Speed", .5);
     SmartDashboard.putNumber("Launch Speed", 1);
+    launchSpeed = 1;
     //basic setters
     feeder = new Feed();
     shooter = new Shooter();
@@ -145,7 +146,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     if(SmartDashboard.getNumber("Max Drive Speed", .5) != .5)
     {
-    driveBase.setMotors(SmartDashboard.getNumber("Max Drive Speed", .5));
+      driveBase.setMotors(SmartDashboard.getNumber("Max Drive Speed", .5));
     }
     if(SmartDashboard.getNumber("Launch Speed", 1) != 1)
     {
@@ -178,6 +179,11 @@ public class Robot extends TimedRobot {
     motor.configPeakOutputForward(peak);
     motor.configPeakOutputReverse(-peak);
     motor.setNeutralMode(NeutralMode.Brake);
+  }
+  public static double lSpeed()
+  {
+    double lSpeed = launchSpeed;
+    return lSpeed;
   }
 
 }
