@@ -154,10 +154,6 @@ public class Robot extends TimedRobot {
     }
     SmartDashboard.putBoolean("Tank Drive?", tank);//give the value to the driver/operator of control mode
     SmartDashboard.putNumber("Motor Temp (R)", shooter.tempCheck());// this should find the temperature of motors for overheating purposes.
-    if(shooter.encRPM() > .05)
-    {
-      System.out.println(shooter.encRPM());
-    }
     Scheduler.getInstance().run();
   }
 
