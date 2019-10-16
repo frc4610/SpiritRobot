@@ -38,7 +38,7 @@ public class Robot extends TimedRobot {
   private static double launchSpeed;
   public static Shooter shooter;
   public static OI m_oi;
-  public static boolean tank;//tank drive if true, arcade if not
+  public static boolean tank;//tank drive if true, arcade if false
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -128,7 +128,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     drive.start();//start driving
-    driveBase.setMotors(.5);//s et max speed of 50%
+    driveBase.setMotors(.5);//set max speed of 50%
     launchSpeed = 1;
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to

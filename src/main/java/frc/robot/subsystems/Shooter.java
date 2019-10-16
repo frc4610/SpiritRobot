@@ -21,30 +21,17 @@ public class Shooter extends Subsystem {
   private CANSparkMax shootL;//left main motor
   private CANSparkMax shootR;//right main motor
   private CANEncoder encoderL;
-  //private CANSparkMax shootLF;//Left follower motor
- // private CANSparkMax shootRF;//right follower motor
-  //test 1
   public Shooter()
   { 
     shootL = new CANSparkMax(8, MotorType.kBrushless);// all shooting motors are brushless
     shootR = new CANSparkMax(9, MotorType.kBrushless);
     encoderL = new CANEncoder(shootL);
     encoderL.setPosition(0);
-   // shootLF = new CANSparkMax(10, MotorType.kBrushless);
-    //shootRF = new CANSparkMax(11, MotorType.kBrushless);
-    
-  //  shootLF.setInverted(true);
     shootL.follow(shootR, true);
-    //shootLF.follow(shootR);
-    //shootRF.follow(shootR);
     shootL.setIdleMode(IdleMode.kBrake);//same as neutral mode brake, makes motors hard stop rather than be in neutral
     shootR.setIdleMode(IdleMode.kBrake);
-    //shootLF.setIdleMode(IdleMode.kBrake);
-    //shootRF.setIdleMode(IdleMode.kBrake);
     /*shootR.setOpenLoopRampRate(1);// should be repleacment function to ramp towards full speed, test later after other functionalities work
-    shootRF.setOpenLoopRampRate(1);
-    shootL.setOpenLoopRampRate(1);
-    shootLF.setOpenLoopRampRate(1);*/
+    shootL.setOpenLoopRampRate(1);*/
   }
 
   public void shoot(double speed)
