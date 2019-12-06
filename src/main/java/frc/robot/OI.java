@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.driveModeSwitch;
 import frc.robot.commands.Feed;
 import frc.robot.commands.Shoot;
+import frc.robot.commands.Launch;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -29,6 +30,7 @@ public class OI {
   public Button op6 = new JoystickButton(OP, 6);
   public Button op7 = new JoystickButton(OP, 7);
   public Button op8 = new JoystickButton(OP, 8);
+  public Button op9 = new JoystickButton(OP, 9);
   public OI()
   {
     //see various functions
@@ -39,7 +41,8 @@ public class OI {
     op5.whileHeld(new Shoot(.4));
     op6.whileHeld(new Shoot(.6));
     op7.whileHeld(new Shoot(.8));
-    op8.whileHeld(new Shoot(Robot.lSpeed()));
+    op8.whileHeld(new Shoot(1));
+    op9.whileHeld(new Launch());
   }
   //// CREATING BUTTONS
   // One type of button is a joystick button which is any button on a

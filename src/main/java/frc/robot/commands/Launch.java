@@ -10,12 +10,9 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class Shoot extends Command {
-  private double windSpeed;//how fast to accelerate
-  private double maxSpeed;//speed to accelerate towards
-  public Shoot(double MaxSpeed) {
-    requires(Robot.shooter);
-    maxSpeed = MaxSpeed;
+public class Launch extends Command {
+  public Launch() {
+    requires(Robot.cannon);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -23,17 +20,12 @@ public class Shoot extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    windSpeed = .02;//starts the vaule at 2% power
+    Robot.cannon.launch();//init launch
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.shooter.shoot(windSpeed);
-    if(windSpeed <= maxSpeed) // winding up manually in cord like this may be obselete, needs further testing
-    {
-      windSpeed += .02;//slowly increase the power to the shooter
-    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -45,13 +37,13 @@ public class Shoot extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.shooter.shoot(0);
+    Robot.cannon.retract();//failsafe to stop solenoid
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    Robot.shooter.shoot(0);
+    Robot.cannon.retract();
   }
 }

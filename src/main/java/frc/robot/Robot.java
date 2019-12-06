@@ -21,6 +21,7 @@ import frc.robot.subsystems.DriveBase;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Feed;
 import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.TShirtCannon;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,8 +35,9 @@ public class Robot extends TimedRobot {
   public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static DriveBase driveBase;
   public static Feed feeder;
+  public static TShirtCannon cannon;
   public Drive drive;
-  private static double launchSpeed;
+  public static double launchSpeed;
   public static Shooter shooter;
   public static OI m_oi;
   public static boolean tank;//tank drive if true, arcade if false
@@ -54,6 +56,7 @@ public class Robot extends TimedRobot {
     //basic setters
     feeder = new Feed();
     shooter = new Shooter();
+    cannon = new TShirtCannon();//
     tank = true;//default to tank
     driveBase = new DriveBase();
     drive = new Drive();
@@ -76,12 +79,12 @@ public class Robot extends TimedRobot {
   }
 
   /**
-   * This function is called once each time the robot enters Disabled mode.
+   * This function is called once each time the robot enters Disabled ttmode.
    * You can use it to reset any subsystem information you want to clear when
    * the robot is disabled.
    */
   @Override
-  public void disabledInit() {
+  public void disabledInit(){ 
   }
 
   @Override
@@ -178,8 +181,8 @@ public class Robot extends TimedRobot {
   }
   public static double lSpeed()
   {
-    double lSpeed = launchSpeed;
-    return lSpeed;
+    double LSpeed = launchSpeed;
+    return LSpeed;
   }
 
 }
